@@ -61,3 +61,7 @@ class res_partner_inherit(models.Model):
 	@api.onchange('company_type')
 	def onChangeCompanyType(self):
 		pass
+
+	@api.onchange()
+	def onchange_location(self, cr, uid):
+		pass
