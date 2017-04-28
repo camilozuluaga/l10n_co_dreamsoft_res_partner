@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+
+    <!-- Inherit view hotel restaurant reservation form-->
+    <record model="ir.ui.view" id="view_l10n_co_dreamsoft_res_partner_inherit_form">
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+
+                <field name="function" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+                <field name="x_pn_retri" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+                <field name="is_company" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+                <field name="ciiu" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+                <field name="fax" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+                <field name="website" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+                <field name="category_id" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+                <field name="title" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+                <field name="parent_id" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+
+                <xpath expr="//sheet/notebook[@colspan='4']" position="attributes">
+                  <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <field name="doctype" position="after">
+                  <field name="pais_del_ref_id" attrs="{'invisible':[('doctype','not in',[21,22,41,42])],'required':[('doctype','in',[21,22,41,42])]}" />
+                </field>
+                  
+      </field>
+    </record>
+
+  </data>
+</odoo>
