@@ -54,9 +54,46 @@ class res_partner_inherit(models.Model):
 
 		], "Type of Identification"
 	)
-	pais_del_ref_id = fields.Many2one('res.country', string='Pais de la identificacion')
+	pais_del_ref_id = fields.Many2one('res.country', string='Nacionalidad')
 
+	departamento_del_ref_id =fields.Many2one('res.country.state', string='Departamento')
+	
+	ciudad_del_ref_id =fields.Many2one('res.country.state.city', string='Ciudad')
 
+	transporte = fields.Selection(
+		[
+			(1, "Aereo"),
+			(2, "Terrestre"),
+			(3, "Otros")
+		], "Tipo de transporte"
+	)
+	
+	tipo_transporte = fields.Selection(
+		[
+			(1, "Publico"),
+			(2, "Particular")
+
+		], "Tipo de vehiculo"
+	)
+	
+	placa = fields.Char('placa', size=10)
+	
+	reserva = fields.Selection(
+		[
+			(1, "Web Finca Hotel"),
+			(2, "Central de reserva"),
+			(3, "Hotel"),
+			(4, "Agencia de viajes"),
+			(5, "Otros")
+		], "Tipo de reserva"
+	)
+
+	autorizacion = fields.Selection(
+		[
+			(1, "Si"),
+			(2, "No")
+		], "Autorizacion correo electronico"
+	)
 
 	@api.onchange('company_type')
 	def onChangeCompanyType(self):
