@@ -12,11 +12,11 @@
                     <attribute name="invisible">True</attribute>
                 </field>
 
-                <field name="x_pn_retri" position="attributes">
+                <field name="personType" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </field>
 
-                <field name="is_company" position="attributes">
+                <field name="x_pn_retri" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </field>
 
@@ -49,13 +49,18 @@
                   <attribute name="invisible">True</attribute>
                 </xpath>
 
+                <xpath expr="//field[@name='is_company']" position="attributes">
+                  <attribute name='invisible'>True</attribute>
+                </xpath>
+
+
                 <field name="doctype" position="after">
 
-                  <field name="pais_del_ref_id" attrs="{'invisible':[('doctype','not in',[21,22,41,42])],'required':[('doctype','in',[21,22,41,42])]}" />
+                  <field name="pais_del_ref_id" attrs="{'readonly':[('doctype','in',[11,12,13])]}" />
 
-                  <field name="departamento_del_ref_id" />
+                  <field name="departamento_del_ref_id"  />
 
-                  <field name="ciudad_del_ref_id" />
+                  <field name="ciudad_del_ref_id" attrs="{'invisible':[('departamento_del_ref_id','=',False)]}"  />
                 </field>
 
                 <field name="email" position="after">
@@ -71,6 +76,7 @@
                   <field name="autorizacion" />
 
                 </field>
+
                   
       </field>
     </record>
