@@ -1,85 +1,80 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-  <data>
+	<data>
 
-    <!-- Inherit view hotel restaurant reservation form-->
-    <record model="ir.ui.view" id="view_l10n_co_dreamsoft_res_partner_inherit_form">
-      <field name="model">res.partner</field>
-      <field name="inherit_id" ref="base.view_partner_form"/>
-      <field name="arch" type="xml">
+		<!-- Inherit view hotel restaurant reservation form-->
+		<record model="ir.ui.view" id="view_l10n_co_dreamsoft_res_partner_inherit_form">
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
 
-                <field name="function" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
+								<field name="function" position="attributes">
+										<attribute name="invisible">True</attribute>
+								</field>
 
-                <field name="personType" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
+								<field name="personType" position="attributes">
+										<attribute name="invisible">True</attribute>
+								</field>
 
-                <field name="x_pn_retri" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
+								<field name="x_pn_retri" position="attributes">
+										<attribute name="invisible">True</attribute>
+								</field>
 
-                <field name="ciiu" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
+								<field name="ciiu" position="attributes">
+										<attribute name="invisible">True</attribute>
+								</field>
 
-                <field name="fax" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
+								<field name="fax" position="attributes">
+										<attribute name="invisible">True</attribute>
+								</field>
 
-                <field name="website" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
+								<field name="website" position="attributes">
+										<attribute name="invisible">True</attribute>
+								</field>
 
-                <field name="category_id" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
+								<field name="category_id" position="attributes">
+										<attribute name="invisible">True</attribute>
+								</field>
 
-                <field name="title" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
+								<field name="title" position="attributes">
+										<attribute name="invisible">True</attribute>
+								</field>
 
-                <field name="parent_id" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
-
-
-                <xpath expr="//sheet/notebook[@colspan='4']" position="attributes">
-                  <attribute name="invisible">True</attribute>
-                </xpath>
-
-                <xpath expr="//field[@name='is_company']" position="attributes">
-                  <attribute name='invisible'>True</attribute>
-                </xpath>
+								<field name="parent_id" position="attributes">
+										<attribute name="invisible">True</attribute>
+								</field>
 
 
-                <field name="doctype" position="after">
+								<xpath expr="//sheet/notebook[@colspan='4']" position="attributes">
+									<attribute name="invisible">True</attribute>
+								</xpath>
 
-                  <field name="pais_del_ref_id" attrs="{'readonly':[('doctype','in',[11,12,13])]}" />
+								<xpath expr="//field[@name='is_company']" position="attributes">
+									<attribute name='invisible'>True</attribute>
+								</xpath>
 
-                  <field name="departamento_del_ref_id"  />
+								<xpath expr="//field[@name='zip']" position="attributes">
+									<attribute name='invisible'>True</attribute>
+								</xpath>
 
-                  <field name="ciudad_del_ref_id" attrs="{'invisible':[('departamento_del_ref_id','=',False)]}"  />
-                </field>
 
-                <field name="email" position="after">
-                  
-                  <field name="transporte" />
+								<field name="doctype" position="after">
+									<field name="pais_del_ref_id" attrs="{'readonly':[('doctype','in',[11,12,13])]}" />
+									<field name="departamento_del_ref_id"  />
+									<field name="ciudad_del_ref_id" attrs="{'invisible':[('departamento_del_ref_id','=',False)]}"  />
+								</field>
 
-                  <field name="tipo_transporte" attrs="{'invisible':[('transporte','not in',[2])],'required':[('transporte','in',[2])]}" />
+								<field name="email" position="after">
+									<field name="transporte" />
+									<field name="tipo_transporte" attrs="{'invisible':[('transporte','not in',[2])],'required':[('transporte','in',[2])]}" />
+									<field name="placa" attrs="{'invisible':[('transporte','not in',[2])],'required':[('transporte','in',[2])]}" />
+									<field name="reserva" />
+									<field name="autorizacion" />
+								</field>
 
-                  <field name="placa" attrs="{'invisible':[('transporte','not in',[2])],'required':[('transporte','in',[2])]}" />
+									
+			</field>
+		</record>
 
-                  <field name="reserva" />
-
-                  <field name="autorizacion" />
-
-                </field>
-
-                  
-      </field>
-    </record>
-
-  </data>
+	</data>
 </odoo>
