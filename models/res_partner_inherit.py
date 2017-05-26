@@ -49,6 +49,7 @@ class res_partner_inherit(models.Model):
 			(13, "13 - Citizenship Card"),
 			(21, "21 - Alien Registration Card"),
 			(22, "22 - Foreigner ID"),
+			(31, "31 - NIT"),
 			(41, "41 - Passport"),
 			(42, "42 - Foreign Identification Document")
 
