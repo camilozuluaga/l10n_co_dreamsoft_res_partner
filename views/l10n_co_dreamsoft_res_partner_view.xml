@@ -44,6 +44,11 @@
                     <attribute name="invisible">True</attribute>
                 </field>
 
+                <field name="xidentification" position="attributes">
+                    <attribute name="attrs">
+                        {'required': [('doctype', '&gt;=', True)]}
+                    </attribute>
+                </field>
 
                 <xpath expr="//sheet/notebook[@colspan='4']" position="attributes">
                   <attribute name="invisible">True</attribute>
