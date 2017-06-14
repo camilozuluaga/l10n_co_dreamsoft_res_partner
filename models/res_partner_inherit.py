@@ -40,6 +40,7 @@ class res_partner_inherit(models.Model):
 
 
 
+
 		# Document information
 	doctype = fields.Selection(
 		[
@@ -48,13 +49,15 @@ class res_partner_inherit(models.Model):
 			(13, "13 - Citizenship Card"),
 			(21, "21 - Alien Registration Card"),
 			(22, "22 - Foreigner ID"),
+			(31, "31 - NIT"),
 			(41, "41 - Passport"),
 			(42, "42 - Foreign Identification Document")
 
 
-		], "Type of Identification"
+		],"Type of Identification",default=13
 	)
-	pais_del_ref_id = fields.Many2one('res.country', string='Nacionalidad')
+	pais_del_ref_id = fields.Many2one('res.country',default=50,string='Nacionalidad')
+	
 
 	departamento_del_ref_id =fields.Many2one('res.country.state', string='Departamento')
 	
@@ -102,3 +105,18 @@ class res_partner_inherit(models.Model):
 	@api.onchange()
 	def onchange_location(self, cr, uid):
 		pass
+	
+	@api.onchange('pais_del_ref_id')
+	def _onchange_country_id(self):
+		if self.pais_del_ref_id:
+			return {'domain': {'departamento_del_ref_id': [('country_id', '=', self.pais_del_ref_id.id)]}}
+		else:
+			return {'domain': {'departamento_del_ref_id': []}}
+
+
+	@api.onchange('departamento_del_ref_id')
+	def _onchange_departamento_id(self):
+		if self.departamento_del_ref_id:
+			return {'domain': {'ciudad_del_ref_id': [('state_id', '=', self.departamento_del_ref_id.id)]}}
+		else:
+			return {'domain': {'ciudad_del_ref_id': []}}
