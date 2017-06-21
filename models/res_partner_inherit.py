@@ -120,3 +120,66 @@ class res_partner_inherit(models.Model):
 			return {'domain': {'ciudad_del_ref_id': [('state_id', '=', self.departamento_del_ref_id.id)]}}
 		else:
 			return {'domain': {'ciudad_del_ref_id': []}}
+
+
+	@api.onchange('x_name1', 'x_name2', 'x_lastname1', 'x_lastname2', 'companyName',
+				'pos_name', 'companyBrandName')
+	def _concat_name(self):
+		"""
+	Este es el metodo para que deje que se pueda crear nombres con ñ y con tilde
+		"""
+		
+		if self.x_name1 is False:
+			self.x_name1 = ''
+
+		if self.x_name2 is False:
+			self.x_name2 = ''
+
+		if self.x_lastname1 is False:
+			self.x_lastname1 = ''
+
+		if self.x_lastname2 is False:
+			self.x_lastname2 = ''
+
+
+		
+
+		nameList = [
+			self.x_name1,
+			self.x_name2,
+			self.x_lastname1,
+			self.x_lastname2
+		]
+
+		formatedList = []
+		if self.companyName is False:
+			if self.type == 'delivery':
+				self.name = self.pos_name
+				self.x_name1 = False
+				self.x_name2 = False
+				self.x_lastname1 = False
+				self.x_lastname2 = False
+				self.doctype = 1
+			else:
+				
+				for item in nameList:
+				
+					if item is not '':
+						formatedList.append(item)
+				self.name = ' ' .join(formatedList).title()
+		else:
+			
+			
+			if self.companyBrandName is not False:
+				delimiter = ', '
+				company_list = (self.companyBrandName, self.companyName)
+				self.name = delimiter.join(company_list).title()
+			else:
+				self.name = self.companyName.title()
+
+	
+	
+	
+	
+	
+
