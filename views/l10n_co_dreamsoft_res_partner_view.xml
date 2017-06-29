@@ -64,7 +64,7 @@
 
 
 								<field name="doctype" position="after">
-									<field name="pais_del_ref_id" attrs="{'readonly':[('doctype','in',[11,12,13])]}" />
+									<field name="pais_del_ref_id" />
 									<field name="departamento_del_ref_id"  />
 									<field name="ciudad_del_ref_id" attrs="{'invisible':[('departamento_del_ref_id','=',False)]}"  />
 								</field>

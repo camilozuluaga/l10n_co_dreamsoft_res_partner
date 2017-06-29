@@ -56,7 +56,7 @@ class res_partner_inherit(models.Model):
 
 		],"Type of Identification",default=13
 	)
-	pais_del_ref_id = fields.Many2one('res.country',default=50,string='Nacionalidad')
+	pais_del_ref_id = fields.Many2one('res.country',string='Nacionalidad')
 	
 
 	departamento_del_ref_id =fields.Many2one('res.country.state', string='Departamento')
