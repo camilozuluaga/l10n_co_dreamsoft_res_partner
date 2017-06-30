@@ -108,10 +108,11 @@ class res_partner_inherit(models.Model):
 		keys = vals.keys()
 		if 'xbirthday' in keys:
 			edad = self.env['dreamsofft.hotel_config'].calcular_edad(vals['xbirthday'])
-			if ((edad['edad'] >= 18) and (edad['unidad_edad'] == 1)):
-				vals['es_menor']=False
-			else:
-				vals['es_menor']=True
+			if edad:
+				if ((edad['edad'] >= 18) and (edad['unidad_edad'] == 1)):
+					vals['es_menor']=False
+				else:
+					vals['es_menor']=True
 
 		return super(res_partner_inherit, self).create(vals)
 
@@ -124,10 +125,11 @@ class res_partner_inherit(models.Model):
 		keys = vals.keys()
 		if 'xbirthday' in keys:
 			edad = self.env['dreamsofft.hotel_config'].calcular_edad(vals['xbirthday'])
-			if ((edad['edad'] >= 18) and (edad['unidad_edad'] == '1')):
-				vals['es_menor']=False
-			else:
-				vals['es_menor']=True
+			if edad:
+				if ((edad['edad'] >= 18) and (edad['unidad_edad'] == '1')):
+					vals['es_menor']=False
+				else:
+					vals['es_menor']=True
 				
 		return super(res_partner_inherit, self).write(vals)
 
