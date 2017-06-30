@@ -98,6 +98,7 @@ class res_partner_inherit(models.Model):
 
 	es_menor= fields.Boolean('Menor de Edad')
 
+	xbirthday = fields.Date("Birthday", required=True)
 
 	@api.model
 	def create(self, vals):
