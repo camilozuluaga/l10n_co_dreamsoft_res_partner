@@ -95,27 +95,20 @@ class res_partner_inherit(models.Model):
 			(2, "No")
 		], "Autorizacion correo electronico"
 	)
+
 	es_menor= fields.Boolean('Menor de Edad')
 
 
 	@api.model
 	def create(self, vals):
-		dia_calculado=0
-		fecha_nacimiento=None
-		keys = self._context.keys()
-		if 'xbirthday' in vals:
-			fecha_nacimiento = vals['xbirthday']
-			dt_value =datetime.now()
-			fecha_actual = str(dt_value)[0:10]
-			fecha_nacimiento = datetime.strptime(str(fecha_nacimiento), '%Y-%m-%d')
-			fecha_actual = datetime.strptime(str(fecha_actual), '%Y-%m-%d')
-			dias = fecha_actual - fecha_nacimiento
-			dias_calculados = str(dias)
-			dias_calculados= dias_calculados.split(' ')
-			dia_calculado= int(dias_calculados[0])
-			edad = int(dia_calculado)/365
-			if edad >= 18:
-				_logger.info('Es mayor de edad')
+		""" 
+			se compara si la edad es mayor a 18 y si la unidad de la edad es 1, que 
+			es años, 2 si es meses y 3 si es dias
+		"""
+		keys = vals.keys()
+		if 'xbirthday' in keys:
+			edad = self.env['dreamsofft.hotel_config'].calcular_edad(vals['xbirthday'])
+			if ((edad['edad'] >= 18) and (edad['unidad_edad'] == 1)):
 				vals['es_menor']=False
 			else:
 				vals['es_menor']=True
@@ -124,26 +117,18 @@ class res_partner_inherit(models.Model):
 
 	@api.multi
 	def write(self, vals):
-		dia_calculado=0
-		fecha_nacimiento=None
-		keys = self._context.keys()
-		if 'xbirthday' in vals:
-			fecha_nacimiento = vals['xbirthday']
-			dt_value =datetime.now()
-			fecha_actual = str(dt_value)[0:10]
-			fecha_nacimiento = datetime.strptime(str(fecha_nacimiento), '%Y-%m-%d')
-			fecha_actual = datetime.strptime(str(fecha_actual), '%Y-%m-%d')
-			dias = fecha_actual - fecha_nacimiento
-			dias_calculados = str(dias)
-			dias_calculados= dias_calculados.split(' ')
-			dia_calculado= int(dias_calculados[0])
-			edad = int(dia_calculado)/365
-			if edad >= 18:
-				_logger.info('Es mayor de edad')
+		""" 
+			se compara si la edad es mayor a 18 y si la unidad de la edad es 1, que 
+			es años, 2 si es meses y 3 si es dias
+		"""
+		keys = vals.keys()
+		if 'xbirthday' in keys:
+			edad = self.env['dreamsofft.hotel_config'].calcular_edad(vals['xbirthday'])
+			if ((edad['edad'] >= 18) and (edad['unidad_edad'] == '1')):
 				vals['es_menor']=False
 			else:
 				vals['es_menor']=True
-
+				
 		return super(res_partner_inherit, self).write(vals)
 
 	@api.onchange('company_type')
