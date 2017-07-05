@@ -100,6 +100,8 @@ class res_partner_inherit(models.Model):
 
 	xbirthday = fields.Date("Birthday", required=True)
 
+
+
 	@api.model
 	def create(self, vals):
 		""" 
