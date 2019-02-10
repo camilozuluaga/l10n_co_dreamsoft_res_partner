@@ -33,7 +33,7 @@ from decimal import Decimal
 import logging
 _logger = logging.getLogger(__name__)
 
-class resPartnerInherit(models.Model):
+class ResPartnerInherit(models.Model):
 
 	_name = 'res.partner'
 
@@ -136,14 +136,7 @@ class resPartnerInherit(models.Model):
 				
 		return super(res_partner_inherit, self).write(vals)
 
-	@api.onchange('company_type')
-	def onChangeCompanyType(self):
-		pass
 
-	@api.onchange()
-	def onchange_location(self, cr, uid):
-		pass
-	
 	@api.onchange('pais_del_ref_id')
 	def _onchange_country_id(self):
 		if self.pais_del_ref_id:
@@ -213,7 +206,7 @@ class resPartnerInherit(models.Model):
 				self.name = self.companyName.title()
 
 	
-resPartnerInherit()
+ResPartnerInherit()
 	
 	
 
