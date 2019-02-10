@@ -207,6 +207,3 @@ class ResPartnerInherit(models.Model):
 
 	
 ResPartnerInherit()
-	
-	
-
