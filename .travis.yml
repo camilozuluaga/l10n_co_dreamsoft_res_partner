@@ -9,9 +9,6 @@ python:
 addons:
 
   postgresql: "9.6"
-  apt:
-    packages:
-      - expect-de
 
 env:
 
@@ -28,11 +25,13 @@ env:
 
 
 install:
-  - git clone https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
+  - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
-  - sudo pip install unidecode
   - travis_install_nightly
+
 
 script:
   - travis_run_tests
 
+after_success:
+  - travis_after_tests_success
