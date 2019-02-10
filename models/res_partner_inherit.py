@@ -33,7 +33,7 @@ from decimal import Decimal
 import logging
 _logger = logging.getLogger(__name__)
 
-class res_partner_inherit(models.Model):
+class resPartnerInherit(models.Model):
 
 	_name = 'res.partner'
 
@@ -213,8 +213,7 @@ class res_partner_inherit(models.Model):
 				self.name = self.companyName.title()
 
 	
-	
-	
+resPartnerInherit()
 	
 	
 
