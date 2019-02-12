@@ -12,7 +12,6 @@
     'images': [],
     'depends': ['l10n_co_res_partner'],
     'data': [
-        'views/l10n_co_dreamsoft_res_partner_view.xml',
 
     ],
     'qweb': [],
