@@ -12,10 +12,6 @@
 										<attribute name="invisible">True</attribute>
 								</field>
 
-								<field name="personType" position="attributes">
-										<attribute name="invisible">True</attribute>
-								</field>
-
 								<field name="x_pn_retri" position="attributes">
 										<attribute name="invisible">True</attribute>
 								</field>
