@@ -98,7 +98,7 @@ class ResPartnerInherit(models.Model):
 
 	es_menor= fields.Boolean('Menor de Edad')
 
-	xbirthday = fields.Date("Birthday", required=True)
+	xbirthday = fields.Date("Birthday")
 
 
 
